@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const authRoute = require('./routes/auth');
+const snippetsRoute = require('./routes/snippets');
 
 // app
 const app = express();
@@ -22,8 +24,8 @@ mongoose.connect(
 app.use(express.json());
 
 // middleware - routes
-let authRoute = require('./routes/auth');
 app.use('/api/user', authRoute);
+app.use('/api/snippet', snippetsRoute);
 
 // listen
 app.listen(port, () => {
