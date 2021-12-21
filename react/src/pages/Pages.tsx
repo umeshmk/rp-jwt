@@ -1,6 +1,11 @@
-import {useEffect} from 'react';
-import {Route, Routes, useLocation, useNavigate} from 'react-router-dom';
-import {useAuth} from '../utility';
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
+import {useGetAuth} from '../utility';
 import HomePage from './HomePage';
 import LoginPage from './LoginPage';
 import RegisterPage from './RegisterPage';
@@ -8,29 +13,26 @@ import RegisterPage from './RegisterPage';
 export function Pages() {
   const navigate = useNavigate();
   const location = useLocation();
-  const token = useAuth();
-
-  useEffect(() => {
-    if (!token) {
-      if (location.pathname === '/') navigate('/login');
-    }
-  }, [location]);
-
-  if (!token) {
-    return (
-      <>
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-        </Routes>
-      </>
-    );
-  }
+  const {auth} = useGetAuth();
 
   return (
     <>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        {!auth && (
+          <>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="*" element={<Navigate to="/login" replace={true} />} />
+          </>
+        )}
+        {auth && (
+          <>
+            <Route path="/" element={<HomePage />} />
+            <Route path="*" element={<Navigate to="/" replace={true} />} />
+
+            {/* <Navigate to="/" replace={true} /> */}
+          </>
+        )}
       </Routes>
     </>
   );

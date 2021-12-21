@@ -1,16 +1,13 @@
-import {useEffect} from 'react';
 import styled from 'styled-components';
-import {useAuth} from '../../utility';
+import {useGetAuth} from '../../utility';
 import {Logo, NavLink, styles, Wrap} from './styles';
 
 export const Nav = styled(() => {
-  // const location = useLocation();
-  const token = useAuth();
-
-  useEffect(() => {}, []);
+  const {auth, setAuth} = useGetAuth();
 
   const logout = () => {
     localStorage.clear();
+    setAuth(false);
   };
 
   return (
@@ -18,15 +15,14 @@ export const Nav = styled(() => {
       <Wrap>
         <Logo to="/">rp-jwt</Logo>
         <div>
-          {!token && (
+          {!auth && (
             <>
               <NavLink to="/login">Login</NavLink>
               <NavLink to="/register">Register</NavLink>
             </>
           )}
-          {token && (
+          {auth && (
             <>
-              <NavLink to="/create">+Snippet</NavLink>
               <NavLink to="/" onClick={logout}>
                 Logout
               </NavLink>
