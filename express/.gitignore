@@ -6,3 +6,4 @@ dist-ssr
 docs
 test-folder/*
 *.d.ts
+.env
