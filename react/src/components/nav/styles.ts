@@ -13,6 +13,7 @@ export const Wrap = styled.div`
 
 export const Logo = styled(Link)`
   color: gray;
+  color: brown;
   font-size: 2rem;
   font-weight: 700;
   text-decoration: none;
@@ -22,5 +23,8 @@ export const NavLink = styled(Link)`
   font-size: 1.4rem;
   padding-left: 1rem;
   text-decoration: none;
-  color: darkorchid;
+  color: #555;
+  :hover {
+    color: #000;
+  }
 `;
