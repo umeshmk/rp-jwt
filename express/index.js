@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const authRoute = require('./routes/auth');
 const snippetsRoute = require('./routes/snippets');
+const cors = require('cors');
 
 // app
 const app = express();
@@ -20,7 +21,14 @@ mongoose.connect(
   () => console.log('connected with MongoDB')
 );
 
-// middlewares
+// middleware cors
+// const options = {
+//   origin: ['http://localhost:3000'],
+// };
+// app.use(cors(options));
+app.use(cors()); // all origin enabled
+
+// middleware json
 app.use(express.json());
 
 // middleware - routes

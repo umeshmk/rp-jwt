@@ -16,10 +16,6 @@ export function Pages() {
     }
   }, [location]);
 
-  useEffect(() => {
-    localStorage.setItem('token', 'adkfjsdfsi');
-  }, []);
-
   if (!token) {
     return (
       <>
