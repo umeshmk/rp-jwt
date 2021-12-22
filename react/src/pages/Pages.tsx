@@ -8,6 +8,7 @@ import {
 import {useGetAuth} from '../utility';
 import HomePage from './HomePage';
 import LoginPage from './LoginPage';
+import {PrivatePage} from './PrivatePage';
 import RegisterPage from './RegisterPage';
 
 export function Pages() {
@@ -22,11 +23,13 @@ export function Pages() {
           <>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/private" element={<PrivatePage />} />
             <Route path="*" element={<Navigate to="/login" replace={true} />} />
           </>
         )}
         {auth && (
           <>
+            <Route path="/private" element={<PrivatePage />} />
             <Route path="/" element={<HomePage />} />
             <Route path="*" element={<Navigate to="/" replace={true} />} />
 

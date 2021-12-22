@@ -28,6 +28,7 @@ export const Nav = styled(() => {
               </NavLink>
             </>
           )}
+          <NavLink to="/private">Private</NavLink>
         </div>
       </Wrap>
     </>

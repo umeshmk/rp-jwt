@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const authRoute = require('./routes/auth');
-const snippetsRoute = require('./routes/snippets');
+const privateRoute = require('./routes/private');
 const cors = require('cors');
 
 // app
@@ -33,7 +33,7 @@ app.use(express.json());
 
 // middleware - routes
 app.use('/api/user', authRoute);
-app.use('/api/snippet', snippetsRoute);
+app.use('/api/private', privateRoute);
 
 // listen
 app.listen(port, () => {

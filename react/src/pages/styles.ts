@@ -14,3 +14,10 @@ export const PageTitle = styled.h1`
   text-align: center;
   margin: 2rem;
 `;
+
+export const PrivateAccess = styled.p<{error?: boolean}>`
+  color: ${(p) => (p.error ? 'crimson' : 'green')};
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 300;
+`;
