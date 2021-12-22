@@ -1,5 +1,7 @@
 # React project - Json web tokens (JWT)
 
+**How it works ? - Watch [Youtube](https://youtu.be/Ap2BujFyt50)**
+
 ## Backend
 
 - Node
